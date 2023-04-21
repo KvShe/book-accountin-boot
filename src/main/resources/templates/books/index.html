@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книги</title>
+    <link media="all" rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+<h1>Список книг</h1>
+<div class="list">
+    <div class="center" th:each="book : ${books}">
+        <a th:href="@{/books/{id}(id = ${book.getId()})}" th:text="${book.getName()} + ': ' + ${book.getAuthor()}"/>
+    </div>
+</div>
+<button class="center" onclick="document.location='books/new'">Добавить новую книгу</button>
+
+<form class="center" th:action="@{/books/search}">
+    <button>Поиск</button>
+</form>
+
+<div class="to_main">
+    <a class="to_main" href="index.jsp">На главную</a>
+</div>
+</body>
+</html>
